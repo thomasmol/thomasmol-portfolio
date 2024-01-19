@@ -3,52 +3,74 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import { Image } from "astro:assets";
+import { ExternalLink } from "lucide-svelte";
 
-
-const projects = (await getCollection("projects")).sort(
-  function (first, second) {
+const projects = (await getCollection("projects"))
+  .sort(function (first, second) {
     return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-  }
-).slice(0,3);
+  })
+  .slice(0, 3);
 
-const notes = (await getCollection("notes")).sort(
-  function (first, second) {
-	return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-  }
-).slice(0,3);
+const notes = (await getCollection("notes"))
+  .sort(function (first, second) {
+    return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
+  })
+  .slice(0, 3);
+
+const books = (await getCollection("books"))
+  .sort(function (first, second) {
+    return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
+  })
+  .slice(0, 3);
 ---
 
 <Layout title="Thomas Mol">
   <main class="max-w-3xl px-4 mx-auto md:py-10 py-2">
     <section class="py-12">
-		<Image src="/images/thomasacc.png" alt="Thomas Mol" width={128} height={128} class="w-20 h-20" />
-      <h1 class="text-2xl mt-4">Hi, I'm Thomas 🫡</h1>
+      <Image
+        src="/images/thomasacc.png"
+        alt="Thomas Mol"
+        width={128}
+        height={128}
+        class="w-20 h-20"
+      />
+      <h1 class="text-2xl mt-4">Thomas</h1>
       <p class="mt-4 text-neutral-700">
         I'm a programmer and I build web apps.
       </p>
       <div class="mt-4 flex items-center gap-2 text-sm text-neutral-600">
         <a
           href="https://x.com/thomas_mol"
+          target="_blank"
           class="text-neutral-600 hover:text-neutral-950"
           >𝕏
         </a>
         /
         <a
-          href="https://x.com/thomas_mol"
+          href="https://github.com/thomasmol"
+          target="_blank"
           class="text-neutral-600 hover:text-neutral-950"
           >Github
         </a>
         /
         <a
-          href="https://x.com/thomas_mol"
+          href="https://linkedin.com/in/thomas-mol"
+          target="_blank"
           class="text-neutral-600 hover:text-neutral-950"
           >LinkedIn
+        </a>
+        /
+        <a
+          href="https://cal.com/thomasmol/10min"
+          target="_blank"
+          class="text-neutral-600 hover:text-neutral-950 flex items-center gap-2"
+          >10 min meeting <ExternalLink size="1em" />
         </a>
       </div>
     </section>
     <section class="py-12">
       <h2 class="text-lg font-semibold">Latest projects</h2>
-      <div class="mt-4">
+      <div class="mt-4 flex flex-col gap-4">
         {
           projects.map((project) => (
             <Card
@@ -63,7 +85,7 @@ const notes = (await getCollection("notes")).sort(
     </section>
     <section class="py-12">
       <h2 class="text-lg font-semibold">Notes</h2>
-	  <div class="mt-4">
+      <div class="mt-4 flex flex-col gap-4">
         {
           notes.map((project) => (
             <Card
@@ -78,9 +100,53 @@ const notes = (await getCollection("notes")).sort(
     </section>
     <section class="py-12">
       <h2 class="text-lg font-semibold">Books</h2>
+      <div class="mt-4 flex flex-col gap-4">
+        {
+          books.map((project) => (
+            <Card
+              title={project.data.title}
+              description={project.data.description}
+              publishedAt={project.data.publishedAt}
+              slug={project.slug}
+            />
+          ))
+        }
+      </div>
     </section>
     <section class="py-12">
       <h2 class="text-lg font-semibold">Get in touch</h2>
+      <p class="mt-4 text-neutral-700 text-sm">
+        Link with me on my socials or book a 10 min meeting.
+      </p>
+      <div class="mt-4 flex items-center gap-2 text-sm text-neutral-600">
+        <a
+          href="https://x.com/thomas_mol"
+          target="_blank"
+          class="text-neutral-600 hover:text-neutral-950"
+          >𝕏
+        </a>
+        /
+        <a
+          href="https://github.com/thomasmol"
+          target="_blank"
+          class="text-neutral-600 hover:text-neutral-950"
+          >Github
+        </a>
+        /
+        <a
+          href="https://linkedin.com/in/thomas-mol"
+          target="_blank"
+          class="text-neutral-600 hover:text-neutral-950"
+          >LinkedIn
+        </a>
+        /
+        <a
+          href="https://cal.com/thomasmol/10min"
+          target="_blank"
+          class="text-neutral-600 hover:text-neutral-950 flex items-center gap-2"
+          >10 min meeting <ExternalLink size="1em" />
+        </a>
+      </div>
     </section>
   </main>
 </Layout>

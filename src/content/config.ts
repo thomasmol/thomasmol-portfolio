@@ -35,4 +35,4 @@ const booksCollection = defineCollection({
   }),
 });
 
-export const collections = { projects: projectsCollection };
+export const collections = { projects: projectsCollection, notes: notesCollection, books: booksCollection };

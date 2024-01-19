@@ -10,22 +10,20 @@ const { title, publishedAt, description, slug } = Astro.props;
 ---
 
 <a
-  class="group w-full flex cursor-pointer flex-col gap-2 transition-all duration-300 border p-4  border-neutral-400"
+  class="group w-full flex cursor-pointer flex-col gap-2 transition-all duration-300 border p-4 border-neutral-400 hover:shadow-lg"
   href={`/projects/${slug}`}>
   <div
     class="flex w-full flex-col justify-between gap-2 md:flex-row md:items-center">
     <h3 class="font-medium">{title}</h3>
-    <div class="flex flex-row items-center gap-4">
-      <p class="text-xs text-neutral-700">
-        {
-          publishedAt.toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "short",
-            year: "2-digit",
-          })
-        }
-      </p>
-    </div>
+    <p class="text-xs text-neutral-700">
+      {
+        publishedAt.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        })
+      }
+    </p>
   </div>
 
   <p class="truncate text-neutral-700 text-sm">
