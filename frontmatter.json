@@ -1,0 +1,154 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "projects",
+      "previewPath": "'projects'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "publishedAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "isPublished",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "name": "isDraft",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "notes",
+      "previewPath": "'notes'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "publishedAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "isPublished",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "name": "isDraft",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "books",
+      "previewPath": "'books'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "rating",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "readingStatus",
+          "type": "choice",
+          "choices": [
+            "read",
+            "reading",
+            "to-read"
+          ],
+          "required": true
+        },
+        {
+          "name": "publishedAt",
+          "type": "datetime",
+          "default": "{{now}}",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "single": true,
+          "required": true
+        },
+        {
+          "name": "isPublished",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "name": "isDraft",
+          "type": "boolean"
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "projects",
+      "path": "[[workspace]]/src/content/projects",
+      "contentTypes": [
+        "projects"
+      ]
+    },
+    {
+      "title": "notes",
+      "path": "[[workspace]]/src/content/notes",
+      "contentTypes": [
+        "notes"
+      ]
+    },
+    {
+      "title": "books",
+      "path": "[[workspace]]/src/content/books",
+      "contentTypes": [
+        "books"
+      ]
+    }
+  ],
+  "frontMatter.content.publicFolder": {
+    "path": "src/assets",
+    "relative": true
+  }
+}
