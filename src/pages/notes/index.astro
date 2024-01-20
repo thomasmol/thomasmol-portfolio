@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const notes = (await getCollection("notes")).sort(function (first, second) {
+  return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
+});
+---
+
+<Layout title="Template - All Posts">
+  <main class="flex flex-col gap-20">
+    <h1 class="text-2xl text-neutral-100">Notes</h1>
+
+    <article class="flex flex-col gap-4">
+      {
+        notes.map((note) => (
+         {note}
+        ))
+      }
+    </article>
+  </main>
+</Layout>

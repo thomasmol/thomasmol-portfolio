@@ -1,39 +1,39 @@
 import { defineCollection, z } from "astro:content";
 
-const projectsCollection = defineCollection({
+const projects = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
     status: z.enum(["published", "draft"]),
-    publishedAt: z.date(),
+    publishedAt: z.date({ coerce: true }),
   }),
 });
 
-const notesCollection = defineCollection({
+const notes = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
     status: z.enum(["published", "draft"]),
-    publishedAt: z.date(),
+    publishedAt: z.date({ coerce: true }),
   }),
 });
 
-const booksCollection = defineCollection({
+const books = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    rating: z.number(),
-    readingStatus: z.enum(["read", "reading", "to-read"]),
+    rating: z.number().optional(),
+    readingStatus: z.enum(["read", "reading", "to-read"]).optional(),
     status: z.enum(["published", "draft"]),
-    publishedAt: z.date(),
+    publishedAt: z.date({ coerce: true }),
   }),
 });
 
 export const collections = {
-  'projects': projectsCollection,
-  'notes': notesCollection,
-  'books': booksCollection,
+  projects,
+  notes,
+  books,
 };
