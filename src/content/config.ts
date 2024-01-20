@@ -4,21 +4,19 @@ const projectsCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    publishedAt: z.date(),
     description: z.string(),
-    isPublished: z.boolean(),
-    isDraft: z.boolean().default(false),
+    status: z.enum(["published", "draft"]),
+    publishedAt: z.date(),
   }),
 });
 
-const notesCollection = defineCollection({ 
+const notesCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    publishedAt: z.date(),
     description: z.string(),
-    isPublished: z.boolean(),
-    isDraft: z.boolean().default(false),
+    status: z.enum(["published", "draft"]),
+    publishedAt: z.date(),
   }),
 });
 
@@ -26,13 +24,16 @@ const booksCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    description: z.string(),
     rating: z.number(),
     readingStatus: z.enum(["read", "reading", "to-read"]),
+    status: z.enum(["published", "draft"]),
     publishedAt: z.date(),
-    description: z.string(),
-    isPublished: z.boolean(),
-    isDraft: z.boolean().default(false),
   }),
 });
 
-export const collections = { projects: projectsCollection, notes: notesCollection, books: booksCollection };
+export const collections = {
+  'projects': projectsCollection,
+  'notes': notesCollection,
+  'books': booksCollection,
+};

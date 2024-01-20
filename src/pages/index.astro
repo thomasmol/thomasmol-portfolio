@@ -5,23 +5,38 @@ import Card from "../components/Card.astro";
 import { Image } from "astro:assets";
 import { ExternalLink } from "lucide-svelte";
 
-const projects = (await getCollection("projects"))
-  .sort(function (first, second) {
-    return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-  })
-  .slice(0, 3);
+let projects = await getCollection("projects");
+if (projects && projects.length > 0) {
+  projects = projects
+    .sort(function (first, second) {
+      return (
+        second.data.publishedAt.getTime() - first.data.publishedAt.getTime()
+      );
+    })
+    .slice(0, 3);
+}
 
-const notes = (await getCollection("notes"))
-  .sort(function (first, second) {
-    return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-  })
-  .slice(0, 3);
+let notes = await getCollection("notes");
+if (notes && notes.length > 0) {
+  notes = notes
+    .sort(function (first, second) {
+      return (
+        second.data.publishedAt.getTime() - first.data.publishedAt.getTime()
+      );
+    })
+    .slice(0, 3);
+}
 
-const books = (await getCollection("books"))
-  .sort(function (first, second) {
-    return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-  })
-  .slice(0, 3);
+let books = await getCollection("books");
+if (books && books.length > 0) {
+  books = books
+    .sort(function (first, second) {
+      return (
+        second.data.publishedAt.getTime() - first.data.publishedAt.getTime()
+      );
+    })
+    .slice(0, 3);
+}
 ---
 
 <Layout title="Thomas Mol">
