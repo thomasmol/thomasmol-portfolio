@@ -13,6 +13,7 @@ export default config({
       label: "Projects",
       slugField: "title",
       path: "src/content/projects/*",
+      entryLayout: "content",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
@@ -48,6 +49,7 @@ export default config({
       label: "Notes",
       slugField: "title",
       path: "src/content/notes/*",
+      entryLayout: "content",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
@@ -83,6 +85,7 @@ export default config({
       label: "Books",
       slugField: "title",
       path: "src/content/books/*",
+      entryLayout: "content",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
