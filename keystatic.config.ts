@@ -2,10 +2,15 @@ import { config, fields, collection } from "@keystatic/core";
 
 export default config({
   storage: {
-    kind: 'github',
+    kind: "github",
     repo: {
-      owner: 'thomasmol',
-      name: 'thomasmol-portfolio',
+      owner: "thomasmol",
+      name: "thomasmol-portfolio",
+    },
+  },
+  ui: {
+    brand: {
+      name: "Thomas Mol",
     },
   },
   collections: {
@@ -35,7 +40,13 @@ export default config({
         }),
         content: fields.document({
           label: "Content",
-          formatting: true,
+          formatting: {
+            listTypes: true,
+            headingLevels: true,
+            blockTypes: true,
+            alignment: true,
+            inlineMarks: true,
+          },
           dividers: true,
           links: true,
           images: {
@@ -71,7 +82,13 @@ export default config({
         }),
         content: fields.document({
           label: "Content",
-          formatting: true,
+          formatting: {
+            listTypes: true,
+            headingLevels: true,
+            blockTypes: true,
+            alignment: true,
+            inlineMarks: true,
+          },
           dividers: true,
           links: true,
           images: {
@@ -129,7 +146,13 @@ export default config({
         }),
         content: fields.document({
           label: "Content",
-          formatting: true,
+          formatting: {
+            listTypes: true,
+            headingLevels: true,
+            blockTypes: true,
+            alignment: true,
+            inlineMarks: true,
+          },
           dividers: true,
           links: true,
           images: {

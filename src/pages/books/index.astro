@@ -1,22 +1,30 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import CollectionList from "../../layouts/CollectionList.astro";
+import Card from "../../components/Card.astro";
 
-const books = (await getCollection("books")).sort(function (first, second) {
-  return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
-});
+let books = await getCollection("books");
+if (books && books.length > 0) {
+  books = books.sort(function (first, second) {
+    return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
+  });
+}
 ---
 
-<Layout title="Template - All Posts">
-  <main class="flex flex-col gap-20">
-    <h1 class="text-2xl text-neutral-100">Books</h1>
-
-    <article class="flex flex-col gap-4">
+<Layout title="All books">
+  <CollectionList title="Books" description="Books I've read or am reading">
+    <section class="mt-4 flex flex-col gap-4">
       {
         books.map((book) => (
-         {book}
+          <Card
+            title={book.data.title}
+            description={book.data.description}
+            publishedAt={book.data.publishedAt}
+            slug={`/books/${book.slug}`}
+          />
         ))
       }
-    </article>
-  </main>
+    </section>
+  </CollectionList>
 </Layout>

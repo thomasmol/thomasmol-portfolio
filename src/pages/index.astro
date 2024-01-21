@@ -13,7 +13,7 @@ if (projects && projects.length > 0) {
         second.data.publishedAt.getTime() - first.data.publishedAt.getTime()
       );
     })
-    .slice(0, 3);
+    .slice(0, 4);
 }
 
 let notes = await getCollection("notes");
@@ -24,7 +24,7 @@ if (notes && notes.length > 0) {
         second.data.publishedAt.getTime() - first.data.publishedAt.getTime()
       );
     })
-    .slice(0, 3);
+    .slice(0, 2);
 }
 
 let books = await getCollection("books");
@@ -35,7 +35,7 @@ if (books && books.length > 0) {
         second.data.publishedAt.getTime() - first.data.publishedAt.getTime()
       );
     })
-    .slice(0, 3);
+    .slice(0, 2);
 }
 ---
 
@@ -84,7 +84,13 @@ if (books && books.length > 0) {
       </div>
     </section>
     <section class="py-12">
-      <h2 class="text-lg font-semibold">Latest projects</h2>
+      <header class="flex justify-between gap-2 items-center">
+        <h2 class="text-lg font-semibold">Latest projects</h2>
+        <a
+          href="/projects"
+          class="text-sm text-neutral-600 hover:text-neutral-950">View all</a
+        >
+      </header>
       <div class="mt-4 flex flex-col gap-4">
         {
           projects.map((project) => (
@@ -92,37 +98,47 @@ if (books && books.length > 0) {
               title={project.data.title}
               description={project.data.description}
               publishedAt={project.data.publishedAt}
-              slug={project.slug}
+              slug={`/projects/${project.slug}`}
             />
           ))
         }
       </div>
     </section>
     <section class="py-12">
-      <h2 class="text-lg font-semibold">Notes</h2>
+      <header class="flex justify-between gap-2 items-center">
+        <h2 class="text-lg font-semibold">Notes</h2>
+        <a href="/notes" class="text-sm text-neutral-600 hover:text-neutral-950"
+          >View all</a
+        >
+      </header>
       <div class="mt-4 flex flex-col gap-4">
         {
-          notes.map((project) => (
+          notes.map((note) => (
             <Card
-              title={project.data.title}
-              description={project.data.description}
-              publishedAt={project.data.publishedAt}
-              slug={project.slug}
+              title={note.data.title}
+              description={note.data.description}
+              publishedAt={note.data.publishedAt}
+              slug={`/notes/${note.slug}`}
             />
           ))
         }
       </div>
     </section>
     <section class="py-12">
-      <h2 class="text-lg font-semibold">Books</h2>
+      <header class="flex justify-between gap-2 items-center">
+        <h2 class="text-lg font-semibold">Books</h2>
+        <a href="/books" class="text-sm text-neutral-600 hover:text-neutral-950"
+          >View all</a
+        >
+      </header>
       <div class="mt-4 flex flex-col gap-4">
         {
-          books.map((project) => (
+          books.map((book) => (
             <Card
-              title={project.data.title}
-              description={project.data.description}
-              publishedAt={project.data.publishedAt}
-              slug={project.slug}
+              title={book.data.title}
+              description={book.data.description}
+              publishedAt={book.data.publishedAt}
+              slug={`/books/${book.slug}`}
             />
           ))
         }

@@ -1,0 +1,24 @@
+---
+import { ArrowLeft } from "lucide-svelte";
+interface Props {
+  title: string;
+  collectionName: string;
+}
+
+const { title, collectionName } = Astro.props;
+---
+
+<main class="max-w-3xl px-4 mx-auto md:py-10 py-2">
+  <a
+    href={`/${collectionName.toLowerCase()}`}
+    class="text-neutral-900 hover:bg-neutral-200 rounded-full px-2 py-1 inline-flex items-center gap-1">
+    <ArrowLeft size="1em" />
+    <span class="capitalize">{collectionName}</span>
+  </a>
+  <header class="flex flex-col gap-2">
+    <h1 class="text-3xl text-neutral-900 font-semibold mt-4">
+      {title}
+    </h1>
+  </header>
+  <slot />
+</main>
