@@ -1,27 +1,62 @@
 ---
+import astroConfig from '../../astro.config.mjs';
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+const defaultMetaTags = {
+  title: "Thomas Mol",
+  description: "Programmer, maker from the Netherlands",
+  keywords: "Thomas Mol, programmer, coder, designer, maker, Netherlands, web development, software development, startup, entrepreneur",
+  ogimage: `${astroConfig.site}/images/ogimage.png`,
+};
+// Example: Construct a canonical URL using your production domain
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth overflow-y-scroll">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="robots" content="index, follow" />
-		<meta name="googlebot" content="index, follow" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<script defer data-domain="thomasmol.com" src="https://plausible.io/js/script.js"></script>
-
-	</head>
-	<body class="bg-neutral-50 text-neutral-950">
-		<slot />
-	</body>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{defaultMetaTags.title}</title>
+    <script
+      defer
+      data-domain="thomasmol.com"
+      src="https://plausible.io/js/script.js"></script>
+    <meta
+      name="description"
+      content={defaultMetaTags.description}
+    />
+    <meta
+      name="keywords"
+      content={defaultMetaTags.keywords}
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content={defaultMetaTags.title}
+    />
+    <meta
+      property="og:description"
+      content={defaultMetaTags.description}
+    />
+    <meta
+      property="og:image"
+      content={defaultMetaTags.ogimage}
+    />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@thomas_mol" />
+    <link rel="canonical" href={canonicalURL} />
+  </head>
+  <body class="bg-neutral-50 text-neutral-950 overflow-y-scroll">
+    <slot />
+  </body>
 </html>
