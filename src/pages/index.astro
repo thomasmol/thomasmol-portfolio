@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import { Image } from "astro:assets";
 import { ExternalLink } from "lucide-svelte";
+import ProjectCard from "../components/ProjectCard.astro";
 
 let projects = await getCollection("projects");
 if (projects && projects.length > 0) {
@@ -50,35 +51,35 @@ if (books && books.length > 0) {
         class="w-20 h-20"
       />
       <h1 class="text-2xl mt-4">Thomas</h1>
-      <p class="mt-4 text-neutral-700">
+      <p class="mt-4 text-zinc-700">
         I'm a programmer from Utrecht, The Netherlands and I build web apps.
       </p>
-      <div class="mt-4 flex items-center gap-2 text-sm text-neutral-600">
+      <div class="mt-4 flex items-center gap-2 text-sm text-zinc-600">
         <a
           href="https://x.com/thomas_mol"
           target="_blank"
-          class="text-neutral-600 hover:text-neutral-950"
+          class="text-zinc-600 hover:text-zinc-950"
           >𝕏
         </a>
         /
         <a
           href="https://github.com/thomasmol"
           target="_blank"
-          class="text-neutral-600 hover:text-neutral-950"
+          class="text-zinc-600 hover:text-zinc-950"
           >Github
         </a>
         /
         <a
           href="https://linkedin.com/in/thomas-mol"
           target="_blank"
-          class="text-neutral-600 hover:text-neutral-950"
+          class="text-zinc-600 hover:text-zinc-950"
           >LinkedIn
         </a>
         /
         <a
           href="https://cal.com/thomasmol/10min"
           target="_blank"
-          class="text-neutral-600 hover:text-neutral-950 flex items-center gap-2"
+          class="text-zinc-600 hover:text-zinc-950 flex items-center gap-2"
           >10 min meeting <ExternalLink size="1em" />
         </a>
       </div>
@@ -88,16 +89,15 @@ if (books && books.length > 0) {
         <h2 class="text-lg font-semibold">Latest projects</h2>
         <a
           href="/projects"
-          class="text-sm text-neutral-600 hover:text-neutral-950">View all</a
+          class="text-sm text-zinc-600 hover:text-zinc-950">View more</a
         >
       </header>
-      <div class="mt-4 flex flex-col gap-4">
+      <div class="mt-4 grid grid-cols-2 gap-4">
         {
           projects.map((project) => (
-            <Card
+            <ProjectCard
               title={project.data.title}
               description={project.data.description}
-              publishedAt={project.data.publishedAt}
               slug={`/projects/${project.slug}`}
             />
           ))
@@ -107,8 +107,8 @@ if (books && books.length > 0) {
     <section class="py-12">
       <header class="flex justify-between gap-2 items-center">
         <h2 class="text-lg font-semibold">Notes</h2>
-        <a href="/notes" class="text-sm text-neutral-600 hover:text-neutral-950"
-          >View all</a
+        <a href="/notes" class="text-sm text-zinc-600 hover:text-zinc-950"
+          >View more</a
         >
       </header>
       <div class="mt-4 flex flex-col gap-4">
@@ -127,8 +127,8 @@ if (books && books.length > 0) {
     <section class="py-12">
       <header class="flex justify-between gap-2 items-center">
         <h2 class="text-lg font-semibold">Books</h2>
-        <a href="/books" class="text-sm text-neutral-600 hover:text-neutral-950"
-          >View all</a
+        <a href="/books" class="text-sm text-zinc-600 hover:text-zinc-950"
+          >View more</a
         >
       </header>
       <div class="mt-4 flex flex-col gap-4">
@@ -146,35 +146,35 @@ if (books && books.length > 0) {
     </section>
     <section class="py-12">
       <h2 class="text-lg font-semibold">Get in touch</h2>
-      <p class="mt-4 text-neutral-700 text-sm">
+      <p class="mt-4 text-zinc-700 text-sm">
         Link with me on my socials or book a 10 min meeting.
       </p>
-      <div class="mt-4 flex items-center gap-2 text-sm text-neutral-600">
+      <div class="mt-4 flex items-center gap-2 text-sm text-zinc-600">
         <a
           href="https://x.com/thomas_mol"
           target="_blank"
-          class="text-neutral-600 hover:text-neutral-950"
+          class="text-zinc-600 hover:text-zinc-950"
           >𝕏
         </a>
         /
         <a
           href="https://github.com/thomasmol"
           target="_blank"
-          class="text-neutral-600 hover:text-neutral-950"
+          class="text-zinc-600 hover:text-zinc-950"
           >Github
         </a>
         /
         <a
           href="https://linkedin.com/in/thomas-mol"
           target="_blank"
-          class="text-neutral-600 hover:text-neutral-950"
+          class="text-zinc-600 hover:text-zinc-950"
           >LinkedIn
         </a>
         /
         <a
           href="https://cal.com/thomasmol/10min"
           target="_blank"
-          class="text-neutral-600 hover:text-neutral-950 flex items-center gap-2"
+          class="text-zinc-600 hover:text-zinc-950 flex items-center gap-2"
           >10 min meeting <ExternalLink size="1em" />
         </a>
       </div>

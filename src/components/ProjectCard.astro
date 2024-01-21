@@ -1,12 +1,11 @@
 ---
 interface Props {
   title: string;
-  publishedAt: Date;
   description: string;
   slug: string;
 }
 
-const { title, publishedAt, description, slug } = Astro.props;
+const { title, description, slug } = Astro.props;
 ---
 
 <a
@@ -15,15 +14,6 @@ const { title, publishedAt, description, slug } = Astro.props;
   <div
     class="flex w-full flex-col justify-between gap-2 md:flex-row md:items-center">
     <h3 class="font-medium">{title}</h3>
-    <p class="text-xs text-zinc-700">
-      {
-        new Date(publishedAt).toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        })
-      }
-    </p>
   </div>
 
   <p class="truncate text-zinc-700 text-sm">

@@ -1,5 +1,5 @@
 ---
-import astroConfig from '../../astro.config.mjs';
+import astroConfig from "../../astro.config.mjs";
 
 interface Props {
   title: string;
@@ -9,10 +9,10 @@ const { title } = Astro.props;
 const defaultMetaTags = {
   title: "Thomas Mol",
   description: "Programmer, maker from the Netherlands",
-  keywords: "Thomas Mol, programmer, coder, designer, maker, Netherlands, web development, software development, startup, entrepreneur",
+  keywords:
+    "Thomas Mol, programmer, coder, designer, maker, Netherlands, web development, software development, startup, entrepreneur",
   ogimage: `${astroConfig.site}/images/ogimage.png`,
 };
-// Example: Construct a canonical URL using your production domain
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -30,33 +30,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       defer
       data-domain="thomasmol.com"
       src="https://plausible.io/js/script.js"></script>
-    <meta
-      name="description"
-      content={defaultMetaTags.description}
-    />
-    <meta
-      name="keywords"
-      content={defaultMetaTags.keywords}
-    />
+    <meta name="description" content={defaultMetaTags.description} />
+    <meta name="keywords" content={defaultMetaTags.keywords} />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content={defaultMetaTags.title}
-    />
-    <meta
-      property="og:description"
-      content={defaultMetaTags.description}
-    />
-    <meta
-      property="og:image"
-      content={defaultMetaTags.ogimage}
-    />
+    <meta property="og:title" content={defaultMetaTags.title} />
+    <meta property="og:description" content={defaultMetaTags.description} />
+    <meta property="og:image" content={defaultMetaTags.ogimage} />
     <meta property="og:url" content={canonicalURL} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@thomas_mol" />
     <link rel="canonical" href={canonicalURL} />
   </head>
-  <body class="bg-neutral-50 text-neutral-950 overflow-y-scroll">
+  <body class="bg-zinc-50 text-zinc-950 overflow-y-scroll">
     <slot />
   </body>
 </html>
+
+<style>
+    body {
+    background-color: #fafafa;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23e4e4e7' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  }
+</style>

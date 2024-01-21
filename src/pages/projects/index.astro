@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import CollectionList from "../../layouts/CollectionList.astro";
-import Card from "../../components/Card.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
 
 let projects = await getCollection("projects");
 if (projects && projects.length > 0) {
@@ -17,10 +17,9 @@ if (projects && projects.length > 0) {
     <section class="mt-4 flex flex-col gap-4">
       {
         projects.map((project) => (
-          <Card
+          <ProjectCard
             title={project.data.title}
             description={project.data.description}
-            publishedAt={project.data.publishedAt}
             slug={`/projects/${project.slug}`}
           />
         ))
