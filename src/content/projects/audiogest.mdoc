@@ -4,4 +4,34 @@ publishedAt: '2024-01-20'
 description: A transcribe and summarization web app
 status: published
 ---
-more content
+Audiogest is a web app I built that automatically transcribes and generates summaries of recordings. You can upload a video or audio file and receive a transcript in less than 5 minutes. Then, you can generate a summary or list action items in one click, so simple! Later I added some functionality to edit and export transcripts. Users have told me they like the simplicity of the interface and the accuracy of the transcript, especially in non-English languages.
+
+![Audiogest transcript page](../../assets/images/projects/audiogest/audiogest.png)
+
+## Why I built it
+
+It started as a side project when I was writing my master's thesis in the start of 2023. This was around the time ChatGPT was just released (November 2022) and OpenAI also released their state-of-the-art speech to text model: Whisper. They released this model with open-weights and open-sourced the architecture, meaning anyone could use it freely on their device or host it somewhere in the cloud.
+
+So I hacked a Python script together to get something working. I was conducting interviews for my thesis project at the time, so this was a perfect way to test it. It had incredible accuracy and really helped speed up my work. I added some more code so the transcript was summarized using GPT-3.5, which really helped me quickly digest the interviews I had conducted.
+
+## How I did it
+
+There where 2 problems that the first version had: inference was slow (took 30+ min to transcribe a 40 min recording on my M1 Mac Mini with 16gb or RAM), and it did not have speaker diarization (= separating speech by speaker). So I started working on a custom pipeline that I could host on a GPU server. I ended up creating a public model on Replicate that now has over 70k+ (!) runs: [https://replicate.com/thomasmol/whisper-diarization](https://replicate.com/thomasmol/whisper-diarization). The model is free to use on Replicate and is used on my backend for Audiogest. I started using Pyannote for diarization, another open-source + open-weights AI model.
+
+With this model in place I build a single page demo and published it in March 2023. The demo had no authentication, paywall, database or analytics. Just a single page to validate the idea. It had many problems and didn't work well, but thanks to some back and forth with some early users I managed to fix it.
+
+I started iterating on this demo and eventually came up with a name (audio + digest = audiogest) and added authentication and Stripe for billing to start accepting payments. A week after this release I received my first payment, which was also my first $ I ever made online.
+
+From then on I iterated and slowly improved the web app, added analytics, marketing email, content marketing pages, media file storage for playback, and so on.
+
+## Quick stats
+
+As of January 2024 (10 months of being live)
+
+- 6000+ unique visitors
+- 1000+ signups
+- 100+ paying users
+- 1500+ recordings transcribed
+- $3000+ revenue
+
+Available here: [audiogest.app](https://audiogest.app)
