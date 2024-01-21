@@ -1,6 +1,5 @@
 ---
-import astroConfig from "../../astro.config.mjs";
-import '@fontsource-variable/inter';
+import "@fontsource-variable/inter";
 
 interface Props {
   title: string;
@@ -8,11 +7,11 @@ interface Props {
 
 const { title } = Astro.props;
 const defaultMetaTags = {
-  title: "Thomas Mol",
+  title: title,
   description: "Programmer, maker from the Netherlands",
   keywords:
     "Thomas Mol, programmer, coder, designer, maker, Netherlands, web development, software development, startup, entrepreneur",
-  ogimage: `${astroConfig.site}/images/ogimage.png`,
+  ogimage: `${Astro.site}/images/ogimage.png`,
 };
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -48,7 +47,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 </html>
 
 <style>
-    body {
+  body {
     background-color: #fafafa;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23e4e4e7' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   }
