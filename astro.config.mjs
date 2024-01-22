@@ -13,7 +13,10 @@ export default defineConfig({
   integrations: [tailwind(), svelte(), react(), markdoc(), keystatic()],
   output: "hybrid",
   site: "https://thomasmol.com",
+  server: {
+    host: "0.0.0.0",
+  },
   adapter: node({
-    mode: "standalone"
-  })
+    mode: "standalone",
+  }),
 });
