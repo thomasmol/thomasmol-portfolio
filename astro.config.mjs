@@ -13,5 +13,7 @@ export default defineConfig({
   integrations: [tailwind(), svelte(), react(), markdoc(), keystatic()],
   output: "hybrid",
   site: "https://thomasmol.com",
-  adapter: vercel()
+  adapter: node({
+    mode: "standalone"
+  })
 });
