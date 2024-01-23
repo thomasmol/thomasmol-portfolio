@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import CollectionList from "../../layouts/CollectionList.astro";
 import Card from "../../components/Card.astro";
+import BookCard from "../../components/BookCard.astro";
 
 let books = await getCollection("books");
 if (books && books.length > 0) {
@@ -17,10 +18,9 @@ if (books && books.length > 0) {
     <section class="mt-4 flex flex-col gap-4">
       {
         books.map((book) => (
-          <Card
+          <BookCard
             title={book.data.title}
-            description={book.data.description}
-            publishedAt={book.data.publishedAt}
+            rating={book.data.rating ?? 101}
             slug={`/books/${book.slug}`}
           />
         ))

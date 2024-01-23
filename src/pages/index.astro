@@ -5,6 +5,7 @@ import Card from "../components/Card.astro";
 import { Image } from "astro:assets";
 import { ExternalLink } from "lucide-svelte";
 import ProjectCard from "../components/ProjectCard.astro";
+import BookCard from "../components/BookCard.astro";
 
 let projects = await getCollection("projects");
 if (projects && projects.length > 0) {
@@ -50,9 +51,9 @@ if (books && books.length > 0) {
         height={128}
         class="w-20 h-20"
       />
-      <h1 class="text-2xl mt-4">Thomas</h1>
+      <h1 class="text-2xl mt-4">Hi, I'm Thomas</h1>
       <p class="mt-4 text-zinc-700">
-        I'm a programmer from Utrecht, The Netherlands and I build web apps.
+        I'm a software developer from The Netherlands, building web apps.
       </p>
       <div class="mt-4 flex items-center gap-2 text-sm text-zinc-600">
         <a
@@ -86,10 +87,11 @@ if (books && books.length > 0) {
     </section>
     <section class="py-12">
       <header class="flex justify-between gap-2 items-center">
-        <h2 class="text-lg font-semibold">Latest projects</h2>
-        <a
-          href="/projects"
-          class="text-sm text-zinc-600 hover:text-zinc-950">View more</a
+        <h2 class="text-lg font-semibold">
+          Projects <span class="text-sm font-medium text-zinc-700">(I did or am doing)</span>
+        </h2>
+        <a href="/projects" class="text-sm text-zinc-600 hover:text-zinc-950"
+          >View more</a
         >
       </header>
       <div class="mt-4 grid md:grid-cols-2 gap-4">
@@ -106,7 +108,9 @@ if (books && books.length > 0) {
     </section>
     <section class="py-12">
       <header class="flex justify-between gap-2 items-center">
-        <h2 class="text-lg font-semibold">Notes</h2>
+        <h2 class="text-lg font-semibold">
+          Notes <span class="text-sm font-medium text-zinc-700">(on things)</span>
+        </h2>
         <a href="/notes" class="text-sm text-zinc-600 hover:text-zinc-950"
           >View more</a
         >
@@ -126,7 +130,11 @@ if (books && books.length > 0) {
     </section>
     <section class="py-12">
       <header class="flex justify-between gap-2 items-center">
-        <h2 class="text-lg font-semibold">Books</h2>
+        <h2 class="text-lg font-semibold">
+          Books <span class="text-sm font-medium text-zinc-700"
+            >(and my thoughts on them)</span
+          >
+        </h2>
         <a href="/books" class="text-sm text-zinc-600 hover:text-zinc-950"
           >View more</a
         >
@@ -134,10 +142,9 @@ if (books && books.length > 0) {
       <div class="mt-4 flex flex-col gap-4">
         {
           books.map((book) => (
-            <Card
+            <BookCard
               title={book.data.title}
-              description={book.data.description}
-              publishedAt={book.data.publishedAt}
+              rating={book.data.rating ?? 101}
               slug={`/books/${book.slug}`}
             />
           ))

@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  rating: number;
+  slug: string;
+}
+
+const { title, rating, slug } = Astro.props;
+---
+
+<a
+  class="group w-full bg-zinc-50 flex cursor-pointer flex-col gap-2 transition-all duration-200 border p-4 border-zinc-400 hover:shadow-xl shadow-zinc-300 hover:-translate-y-0.5"
+  href={`${slug}`}>
+  <div
+    class="flex w-full flex-col justify-between gap-2 md:flex-row md:items-center">
+    <h3 class="font-medium">{title}</h3>
+    <span class="text-sm font-normal text-neutral-700">
+        {rating}/10
+    </span>
+  </div>
+</a>
