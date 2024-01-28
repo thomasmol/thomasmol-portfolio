@@ -1,0 +1,10 @@
+---
+title: Spectropic AI
+description: A fast speech-to-text API
+status: published
+---
+For Audiogest I build a custom pipeline to generate transcripts with speaker diarization with Whisper. You can find it here: [https://replicate.com/thomasmol/whisper-diarization](https://replicate.com/thomasmol/whisper-diarization). This public model has over 75k+ runs, and only about 2k are from Audiogest users. So what I did was create an REST API wrapper around this model, that is [Spectropic](https://spectropic.ai).
+
+Just send a file or file url to https://api.spectropic.ai/v1/transcripts and receive a transcript with diarization within 5 minutes.
+
+More to follow!
