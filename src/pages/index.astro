@@ -7,7 +7,7 @@ import { ExternalLink } from "lucide-svelte";
 import ProjectCard from "../components/ProjectCard.astro";
 import BookCard from "../components/BookCard.astro";
 
-let projects = await getCollection("projects");
+let projects = await getCollection("projects", (project) => project.data.status === "published");
 if (projects && projects.length > 0) {
   projects = projects
     .sort(function (first, second) {
@@ -18,7 +18,7 @@ if (projects && projects.length > 0) {
     .slice(0, 4);
 }
 
-let notes = await getCollection("notes");
+let notes = await getCollection("notes", (note) => note.data.status === "published");
 if (notes && notes.length > 0) {
   notes = notes
     .sort(function (first, second) {
@@ -29,7 +29,7 @@ if (notes && notes.length > 0) {
     .slice(0, 2);
 }
 
-let books = await getCollection("books");
+let books = await getCollection("books", (book) => book.data.status === "published");
 if (books && books.length > 0) {
   books = books
     .sort(function (first, second) {

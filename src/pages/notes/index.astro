@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import CollectionList from "../../layouts/CollectionList.astro";
 import Card from "../../components/Card.astro";
 
-let notes = await getCollection("notes");
+let notes = await getCollection("notes", (note) => note.data.status === "published");
 if (notes && notes.length > 0) {
   notes = notes.sort(function (first, second) {
     return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();

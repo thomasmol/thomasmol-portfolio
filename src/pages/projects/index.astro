@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import CollectionList from "../../layouts/CollectionList.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 
-let projects = await getCollection("projects");
+let projects = await getCollection("projects", (project) => project.data.status === "published");
 if (projects && projects.length > 0) {
   projects = projects.sort(function (first, second) {
     return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();

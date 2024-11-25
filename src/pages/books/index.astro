@@ -5,7 +5,7 @@ import CollectionList from "../../layouts/CollectionList.astro";
 import Card from "../../components/Card.astro";
 import BookCard from "../../components/BookCard.astro";
 
-let books = await getCollection("books");
+let books = await getCollection("books", (book) => book.data.status === "published");
 if (books && books.length > 0) {
   books = books.sort(function (first, second) {
     return second.data.publishedAt.getTime() - first.data.publishedAt.getTime();
