@@ -40,6 +40,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@thomas_mol" />
     <link rel="canonical" href={canonicalURL} />
+    <script
+      defer
+      data-domain="thomasmol.com"
+      src="https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"
+    ></script>
+    <script>
+      window.plausible =
+        window.plausible ||
+        function () {
+          (window.plausible.q = window.plausible.q || []).push(arguments);
+        };
+    </script>
   </head>
   <body class="bg-zinc-50 text-zinc-950 overflow-y-scroll">
     <slot />
