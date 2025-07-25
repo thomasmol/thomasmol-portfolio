@@ -26,10 +26,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{defaultMetaTags.title}</title>
-    <script
-      defer
-      data-domain="thomasmol.com"
-      src="https://plausible.io/js/script.js"></script>
     <meta name="description" content={defaultMetaTags.description} />
     <meta name="keywords" content={defaultMetaTags.keywords} />
     <meta property="og:type" content="website" />
@@ -53,7 +49,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         };
     </script>
   </head>
-  <body class="bg-zinc-50 text-zinc-950 overflow-y-scroll">
+  <body class="bg-zinc-50 text-zinc-950 overflow-y-scroll container mx-auto">
     <slot />
   </body>
 </html>
